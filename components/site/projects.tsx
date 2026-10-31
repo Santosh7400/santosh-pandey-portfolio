@@ -3,8 +3,7 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import { ArrowRight, X } from 'lucide-react'
-import { projects, socials } from '@/lib/data'
-import { GithubIcon } from './brand-icons'
+import { projects } from '@/lib/data'
 import { Reveal, SectionBadge, SectionShell, SectionTitle } from './primitives'
 
 type Project = (typeof projects)[number]
@@ -25,15 +24,6 @@ export function Projects() {
           <SectionBadge>Projects</SectionBadge>
           <SectionTitle lead="Featured" accent="Projects" className="mt-5" />
         </div>
-        <a
-          href={socials.github}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 border-b-2 border-neon-violet pb-1 font-display text-lg font-medium text-neon-violet transition-colors hover:text-neon-magenta"
-        >
-          View All Projects
-          <ArrowRight className="size-5" aria-hidden="true" />
-        </a>
       </Reveal>
 
       <ul className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
@@ -69,24 +59,15 @@ export function Projects() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 flex items-center justify-between">
+              <div className="mt-5 flex items-center">
                 <button
                   type="button"
                   onClick={() => openProject(project)}
                   className="inline-flex items-center gap-2 rounded-full border border-neon-violet px-4 py-2 text-sm font-medium transition-colors hover:bg-neon-violet/20"
                 >
-                  View Project
+                  View My Project
                   <ArrowRight className="size-4" aria-hidden="true" />
                 </button>
-                <a
-                  href={`https://github.com/search?q=${encodeURIComponent(project.title)}&type=repositories`}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={`${project.title} on GitHub`}
-                  className="grid size-11 place-items-center rounded-full border border-border bg-background/60 transition-colors hover:border-neon-violet"
-                >
-                  <GithubIcon className="size-5" />
-                </a>
               </div>
           </Reveal>
         ))}
@@ -133,15 +114,6 @@ export function Projects() {
                   </li>
                 ))}
               </ul>
-              <a
-                href={`https://github.com/search?q=${encodeURIComponent(selected.title)}&type=repositories`}
-                target="_blank"
-                rel="noreferrer"
-                className="btn-neon mt-6 inline-flex items-center gap-2 rounded-xl px-5 py-2.5 font-medium text-white"
-              >
-                <GithubIcon className="size-4" />
-                Find on GitHub
-              </a>
             </div>
           </div>
         )}
